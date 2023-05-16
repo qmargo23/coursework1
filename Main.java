@@ -19,7 +19,96 @@ public class Main {
     static int cnt = 0;//статическая переменная-счетчик
 
     public static void main(String[] args) {
-        System.out.println("Hello!");
+        Employee[] employees = new Employee[10];
+        employees[0] = new Employee("ВАВИЛОВ Олег Сергееевич", 1, 80_000.500f);
+        employees[1] = new Employee("ЕВГЕНОВ Иван Викторович", 3, 90_000.400f);
+        employees[2] = new Employee("ЖАБРАК Сергей Анатольевич", 1, 70_000.500f);
+        employees[3] = new Employee("ЗАБЕЛИН Михаил Викторович", 5, 96_000f);
+        employees[4] = new Employee("ВАВИЛОВ Олег Анатольевич", 2, 89_000.500f);
+        employees[5] = new Employee("КАБАНЕЦ Сергей Николаевич", 4, 95_000f);
+        employees[6] = new Employee("ИВАКИН Олег Анатольевич", 2, 66_000.500f);
+        employees[7] = new Employee("ЛАБУТКИН Михаил Анатольевич", 1, 93_000f);
+        employees[8] = new Employee("НАБИЕВ Николай Сергееевич", 1, 78_000.500f);
+        employees[9] = new Employee("НАБОКОВ Иван Николаевич", 1, 56_000f);
+//        System.out.println("__________TEST_001__________");
+//        System.out.println("счетчик id = "+Main.cnt);
+
+        printLine();
+        printEmployees(employees);
+        printLine();
+        costAmount(employees);
+        printLine();
+        calcMinSalary(employees);
+        printLine();
+        calcMaxSalary(employees);
+        printLine();
+        averageValue(employees);
+        printLine();
+        printStaffList(employees);
+        printLine();
+    }
+
+    public static void printEmployees(Employee[] employees) {
+        System.out.println("1. Получить список всех сотрудников со всеми имеющимися по ним данными (вывести в консоль значения всех полей (toString)).");
+        System.out.println();
+        for (int i = 0; i < employees.length; i++) {
+            System.out.println(employees[i]);
+        }
+    }
+    public static void costAmount(Employee[] employees) {
+        System.out.println("2. Посчитать сумму затрат на зарплаты в месяц.");
+        System.out.println();
+        float sum = 0;
+        for (int i = 0; i < employees.length; i++) {
+            sum = sum + employees[i].getSalary();
+        }
+        System.out.println("Сумма затрат на зарплаты в месяц составляет - " + sum + "р.");
+    }
+    public static void calcMinSalary(Employee[] employees) {
+        System.out.println("3. Найти сотрудника с минимальной зарплатой.");
+        float min = employees[0].getSalary(); // нахождение мин значачения и индекса в массиве
+        int minId = 0;
+        for (int i = 1; i < employees.length; i++) {
+            if (employees[i].getSalary() < min) {
+                min = employees[i].getSalary();
+                minId = i;
+            }
+        }
+        System.out.println("Минимальная зарплата у сотрудника: "+ employees[minId].getFIO());
+        }
+    public static void calcMaxSalary(Employee[] employees) {
+        System.out.println("4. Найти сотрудника с максимальной зарплатой.");
+        float max = employees[0].getSalary(); // нахождение max значачения и индекса в массиве
+        int minId = 0;
+        for (int i = 1; i < employees.length; i++) {
+            if (employees[i].getSalary() > max) {
+                max = employees[i].getSalary();
+                minId = i;
+            }
+        }
+        System.out.println("Максимальная зарплата у сотрудника: "+ employees[minId].getFIO());
+    }
+    public static void averageValue(Employee[] employees) {
+        System.out.println("5. Подсчитать среднее значение зарплат");
+        System.out.println();
+        float sum = 0;
+        for (int i = 0; i < employees.length; i++) {
+            sum = sum + employees[i].getSalary();
+        }
+        System.out.println("Среднее значение зарплат в месяц составляет - " + sum/2 + "р.");
+    }
+    public static void printStaffList(Employee[] employees) {
+        System.out.println("6. Получить Ф. И. О. всех сотрудников (вывести в консоль)");
+        System.out.println();
+        System.out.println("Список сотрудников:");
+        for (int i = 0; i < employees.length; i++) {
+            System.out.println(employees[i].getFIO());
+        }
+    }
+    public static void printLine() {
+        System.out.println();
+        System.out.println("*********************************************************************");
+        System.out.println();
     }
 }
 

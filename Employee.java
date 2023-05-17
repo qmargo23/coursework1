@@ -1,14 +1,16 @@
 public class Employee {
-    private String FIO;
+    private final String FIO;
     private int department;
     private float salary;
-    int id = Main.cnt;
+    static int cnt = 0;//статическая переменная-счетчик
+
+    int id = cnt;
 
     public Employee(String FIO, int department, float salary) {
         this.FIO = FIO;
         this.department = department;
         this.salary = salary;
-        Main.cnt++;
+        cnt++;
 
     }
 

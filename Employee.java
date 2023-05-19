@@ -3,15 +3,13 @@ public class Employee {
     private int department;
     private float salary;
     static int cnt = 0;//статическая переменная-счетчик
-
-    int id = cnt++;
+    private int id;
 
     public Employee(String FIO, int department, float salary) {
         this.FIO = FIO;
         this.department = department;
         this.salary = salary;
-        id++;
-
+        this.id = cnt++;
     }
 
     public String getFIO() {
